@@ -1,0 +1,19 @@
+{% extends 'dotaw_app/base.html' %}
+
+{% block content %}
+
+<h2>Все хероес</h2>
+{% for heh in heroes %}
+ <div class="thumbnail">
+
+     <div class="card" style="width: 36rem;">
+         <a href="{{ heh.get_absolute_url }}"><img src="{{ heh.photo.url }}" class="card-img-top" alt="..."></a>
+         <div class="card-body">
+             <p class="card-text"></div>
+         <span class="label label-warning"><h3>{{heh.name}}</h3></span>
+         <p>{{heh.disc}}</p>
+     </div>
+     </p>
+ </div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'dotaw_app/base.html' %}
+
+{% block content %}
+    <span class="label" label="info"><h1>{{heh.name}}</h1></span>
+    <h2>{{heh.ultimate}}</h2>
+    <h2>{{heh.ultimate_disc}}</h2>
+    <button type="button" class="btn">1 клик = 1 поинт кринжа</button>
+    <p>{{heh.bio}}</p>
+    <p>{{heh.disc}}</p>
+    <div class="thumbnail">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ heh.photo.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text"></div>
+
+
+        </div>
+        </p>
+    </div>
+
+{% endblock %}
+

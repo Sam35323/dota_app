@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/dotaw_app/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/dotaw_app/css/bootstrap.min.js" type="text/js">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'persi'%}">DOTA2</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          {% for c in cat_list %}
+          {% if c.pk == category_id %}
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ c.get_absolute_url }}">{{ c.position_name }}</a>
+        </li>
+          {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ c.get_absolute_url }}">{{ c.position_name }}</a>
+        </li>
+          {% endif %}
+        {% endfor %}
+    </div>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
