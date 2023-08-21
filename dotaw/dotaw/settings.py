@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import mimetypes
 from pathlib import Path
 import os
 
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "debug_toolbar",
     'dotaw_app.apps.DotawAppConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -49,11 +51,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+
+    "debug_toolbar.middleware.DebugToolbarMiddleware",]
 
 ROOT_URLCONF = 'dotaw.urls'
 
+
+
 TEMPLATES = [
+
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -126,3 +132,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+INTERNAL_IPS = [
+
+    "127.0.0.1",
+
+]
+
+
+def show_toolbar(request):
+    return True
+
+SHOW_TOOLBAR_CALLBACK = show_toolbar
+
+mimetypes.add_type("dotaw_app/javascript", ".js", True)
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR ,'dotaw_cache'),
+    }
+}

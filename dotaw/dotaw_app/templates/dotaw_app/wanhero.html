@@ -1,22 +1,84 @@
 {% extends 'dotaw_app/base.html' %}
 
 {% block content %}
-    <span class="label" label="info"><h1>{{heh.name}}</h1></span>
-    <h2>{{heh.ultimate}}</h2>
-    <h2>{{heh.ultimate_disc}}</h2>
-    <button type="button" class="btn">1 клик = 1 поинт кринжа</button>
-    <p>{{heh.bio}}</p>
-    <p>{{heh.disc}}</p>
-    <div class="thumbnail">
-        <div class="card" style="width: 18rem;">
-            <img src="{{ heh.photo.url }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"></div>
+<div>
 
-
-        </div>
-        </p>
+    <div class="container-fluid" style="background-color: #E8823C;">
+        <img src="{{ hero.photo.url }}" class="mx-auto d-block" style="width: 70rem" alt="image">
     </div>
 
-{% endblock %}
+    <div>
+        <span class="placeholder col-7 bg-light" style="opacity: 0.9;">
+        <h1 style="word-break: break-all; font-size:150px; color: #000; text-transform: uppercase;">{{hero.name}}</h1>
+        </span>
+        <span class="placeholder col-4 bg-light" style="opacity: 0.9;">
+        <h6 style="color: #000;">{{hero.disc}}</h6>
+        </span>
+    </div>
 
+
+    <br>
+    <br>
+
+    <div class="placeholder col-12" style="opacity: 0.9;">
+        <h3 style="font-size:60px; color: #E8823C; text-transform: uppercase;">
+            Биография
+        </h3>
+        <h4 style="color: #fff; text-transform: uppercase;">
+            {{ hero.bio }}
+        </h4>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="placeholder col-12 bg-light" style="opacity: 0.9;">
+        <h4> Класс: <a style="color: #E8823C;" href="#">{{ hero.top_class.class_name }}</a></h4>
+        <h4>Лучшая позиция: <a style="color: #E8823C;" href="{{ hero.top_position.get_absolute_url }}">
+            {{ hero.top_position.position_name }}</a></h4>
+    </div>
+
+
+    <div class="container-fluid" style="background-color: #E8823C; opacity: 0.9;">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h3> {{ hero.skill_1 }} </h3>
+            </div>
+            <div class="col">
+                <h3> {{ hero.skill_2 }} </h3>
+            </div>
+            <div class="col">
+                <h3> {{ hero.skill_3 }} </h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h4> {{ hero.skill_1_disc }} </h4>
+            </div>
+            <div class="col">
+                <h4> {{ hero.skill_2_disc }} </h4>
+            </div>
+            <div class="col">
+                <h4> {{ hero.skill_3_disc }} </h4>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="placeholder col-12 bg-light" style="opacity: 0.9;">
+        <h3 style="font-size:40px; color: #E8823C; text-transform: uppercase;">
+            Ультимейт {{ hero.ultimate }}
+        </h3>
+        <h4 style="color: #000;">
+            {{ hero.ultimate_disc }}
+        </h4>
+    </div>
+
+    <br>
+    <br>
+</div>
+{% endblock content %}
